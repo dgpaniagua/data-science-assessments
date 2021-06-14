@@ -1,0 +1,116 @@
+0
+00:00:02,958 --> 00:00:04,437
+[KEYBOARD TYPING]
+
+1
+00:00:06,410 --> 00:00:09,380
+RAFAEL IRIZARRY: You may have noticed that numerical data is often
+
+2
+00:00:09,380 --> 00:00:12,090
+summarized with an average value.
+
+3
+00:00:12,090 --> 00:00:15,080
+For example, the quality of a high school is sometimes
+
+4
+00:00:15,080 --> 00:00:16,770
+summarized with one number--
+
+5
+00:00:16,770 --> 00:00:19,730
+the average score in a standardized test.
+
+6
+00:00:19,730 --> 00:00:21,770
+Occasionally, a second number is reported
+
+7
+00:00:21,770 --> 00:00:24,000
+as well-- the standard deviation.
+
+8
+00:00:24,000 --> 00:00:28,910
+So, for example, you might read a report stating that scores at this high school
+
+9
+00:00:28,910 --> 00:00:33,200
+were 680 plus or minus 50.
+
+10
+00:00:33,200 --> 00:00:35,870
+The last number is the standard deviation.
+
+11
+00:00:35,870 --> 00:00:39,380
+Note that the report has summarized an entire vector of scores
+
+12
+00:00:39,380 --> 00:00:41,240
+with just two numbers.
+
+13
+00:00:41,240 --> 00:00:42,530
+Is this appropriate?
+
+14
+00:00:42,530 --> 00:00:44,570
+Is there any important piece of information
+
+15
+00:00:44,570 --> 00:00:49,370
+we&#39;re missing by only looking at this summary rather than the entire list?
+
+16
+00:00:49,370 --> 00:00:52,610
+It turns out that in some cases, these two numbers
+
+17
+00:00:52,610 --> 00:00:55,850
+are pretty much all we need to understand the data.
+
+18
+00:00:55,850 --> 00:00:59,270
+Data visualization techniques will help us determine when
+
+19
+00:00:59,270 --> 00:01:02,180
+this two-number summary is appropriate.
+
+20
+00:01:02,180 --> 00:01:05,209
+These same techniques will serve as alternatives for when
+
+21
+00:01:05,209 --> 00:01:09,150
+these two numbers are not enough.
+
+22
+00:01:09,150 --> 00:01:11,420
+Our first data visualization building block
+
+23
+00:01:11,420 --> 00:01:16,350
+is learning to summarize lists of factors or numeric vectors.
+
+24
+00:01:16,350 --> 00:01:20,210
+The most basic statistical summary of a list of objects or numbers
+
+25
+00:01:20,210 --> 00:01:22,100
+is its distribution.
+
+26
+00:01:22,100 --> 00:01:25,520
+Once a vector has been summarized as a distribution,
+
+27
+00:01:25,520 --> 00:01:29,030
+there are several data visualization techniques to effectively relay
+
+28
+00:01:29,030 --> 00:01:31,360
+this information.
+

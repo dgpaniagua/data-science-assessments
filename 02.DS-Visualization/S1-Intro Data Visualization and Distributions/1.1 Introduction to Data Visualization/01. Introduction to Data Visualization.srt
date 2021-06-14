@@ -1,0 +1,340 @@
+0
+00:00:05,429 --> 00:00:07,970
+RAFAEL IRIZARRY: Looking at the numbers and character strings
+
+1
+00:00:07,970 --> 00:00:10,400
+at the final dataset is rarely useful.
+
+2
+00:00:10,400 --> 00:00:14,390
+To convince yourself, print and stare at the US murders data table.
+
+3
+00:00:14,390 --> 00:00:15,920
+You can do this with this code.
+
+4
+00:00:15,920 --> 00:00:18,410
+What do you learn from staring at this table?
+
+5
+00:00:18,410 --> 00:00:22,370
+How quickly can you determine which states have the largest populations?
+
+6
+00:00:22,370 --> 00:00:24,380
+Which states have the smallest?
+
+7
+00:00:24,380 --> 00:00:26,720
+How large is a typical state?
+
+8
+00:00:26,720 --> 00:00:30,740
+Is there a relationship between population size and total murders?
+
+9
+00:00:30,740 --> 00:00:34,220
+How do the murder rates vary across regions of the country?
+
+10
+00:00:34,220 --> 00:00:36,980
+For most human brains, it is quite difficult
+
+11
+00:00:36,980 --> 00:00:41,690
+to extract this information just from looking at the numbers.
+
+12
+00:00:41,690 --> 00:00:46,250
+In contrast, the answer to all of these questions
+
+13
+00:00:46,250 --> 00:00:50,660
+are readily available from examining this plot.
+
+14
+00:00:50,660 --> 00:00:55,490
+We are reminded of the saying, &quot;A picture is worth a thousand words.&quot;
+
+15
+00:00:55,490 --> 00:00:58,460
+Data visualization provides a powerful way
+
+16
+00:00:58,460 --> 00:01:01,490
+to communicate a data driven finding.
+
+17
+00:01:01,490 --> 00:01:07,280
+In some cases, the visualization is so convincing that no follow up analysis
+
+18
+00:01:07,280 --> 00:01:08,690
+is required.
+
+19
+00:01:08,690 --> 00:01:13,370
+The growing availability of informative data sets and software tools
+
+20
+00:01:13,370 --> 00:01:17,270
+has lead to increased reliance on data visualization
+
+21
+00:01:17,270 --> 00:01:21,620
+across many industries, academia, and government.
+
+22
+00:01:21,620 --> 00:01:25,280
+A visible example are news organizations that are increasingly
+
+23
+00:01:25,280 --> 00:01:30,530
+embracing data journalism and including effective info-graphics
+
+24
+00:01:30,530 --> 00:01:33,740
+and charts as part of their reporting.
+
+25
+00:01:33,740 --> 00:01:38,360
+A particularly effective example is a Wall Street Journal article
+
+26
+00:01:38,360 --> 00:01:41,630
+showing data related to the impact of vaccines
+
+27
+00:01:41,630 --> 00:01:44,330
+on battling infectious diseases.
+
+28
+00:01:44,330 --> 00:01:48,320
+One of the graphs shows measles cases by US state
+
+29
+00:01:48,320 --> 00:01:51,860
+through the years with a vertical line demonstrating
+
+30
+00:01:51,860 --> 00:01:54,230
+when the vaccine was introduced.
+
+31
+00:01:54,230 --> 00:01:57,560
+Another striking example comes from the New York Times.
+
+32
+00:01:57,560 --> 00:02:03,060
+This article showed data on scores from the New York City regents exam.
+
+33
+00:02:03,060 --> 00:02:05,790
+These scores are collected for several reasons,
+
+34
+00:02:05,790 --> 00:02:09,460
+including to determine if a student graduates from high school.
+
+35
+00:02:09,460 --> 00:02:13,340
+In New York City, you need a 65 to pass.
+
+36
+00:02:13,340 --> 00:02:16,340
+The distribution of the test scores forces
+
+37
+00:02:16,340 --> 00:02:21,080
+us to notice something somewhat problematic.
+
+38
+00:02:21,080 --> 00:02:25,460
+The most common test score is the minimum passing grade.
+
+39
+00:02:25,460 --> 00:02:28,850
+With very few just below that value.
+
+40
+00:02:28,850 --> 00:02:32,480
+This unexpected result is consistent with students
+
+41
+00:02:32,480 --> 00:02:37,620
+close to passing having their scores bumped up.
+
+42
+00:02:37,620 --> 00:02:40,520
+This is an example of how data visualization can
+
+43
+00:02:40,520 --> 00:02:43,040
+lead to discoveries which would otherwise
+
+44
+00:02:43,040 --> 00:02:48,050
+be missed if we simply subject that data to a battery of data analysis, tools,
+
+45
+00:02:48,050 --> 00:02:49,660
+or procedures.
+
+46
+00:02:49,660 --> 00:02:53,150
+Data visualization is the strongest tool of what
+
+47
+00:02:53,150 --> 00:02:56,390
+we call exploratory data analysis.
+
+48
+00:02:56,390 --> 00:03:00,200
+John Tukey, considered the father of exploratory data analysis
+
+49
+00:03:00,200 --> 00:03:03,440
+once said, the greatest value of a picture
+
+50
+00:03:03,440 --> 00:03:07,970
+is when it forces us to notice what we never expected to see.
+
+51
+00:03:07,970 --> 00:03:10,610
+We note that many widely used data analysis
+
+52
+00:03:10,610 --> 00:03:15,590
+tools were initiated by discoveries made with exploratory data analysis.
+
+53
+00:03:15,590 --> 00:03:21,040
+Exploratory data analysis is perhaps the most important part of data analysis,
+
+54
+00:03:21,040 --> 00:03:23,850
+yet it is often overlooked.
+
+55
+00:03:23,850 --> 00:03:28,280
+Data visualization is also now pervasive and philanthropic
+
+56
+00:03:28,280 --> 00:03:30,950
+in educational organizations.
+
+57
+00:03:30,950 --> 00:03:36,860
+One example comes from GAPminder and the talks, New Insights on Poverty
+
+58
+00:03:36,860 --> 00:03:40,520
+and the Best Stats You&#39;ve Ever Seen, Hans Roslings
+
+59
+00:03:40,520 --> 00:03:44,450
+forced us to notice the unexpected with a series of plots
+
+60
+00:03:44,450 --> 00:03:47,420
+related to world health and economics.
+
+61
+00:03:47,420 --> 00:03:53,150
+In his videos, he used animated graphs to show us how the world was changing,
+
+62
+00:03:53,150 --> 00:03:56,750
+and how old narratives are no longer true.
+
+63
+00:03:56,750 --> 00:04:01,430
+It is also important to note that mistakes, biases, systematic errors,
+
+64
+00:04:01,430 --> 00:04:05,060
+and other unexpected problems often lead to data
+
+65
+00:04:05,060 --> 00:04:07,250
+that should be handled with care.
+
+66
+00:04:07,250 --> 00:04:11,420
+Failure to discover these problems often leads to flawed analyses
+
+67
+00:04:11,420 --> 00:04:13,100
+and false discoveries.
+
+68
+00:04:13,100 --> 00:04:17,680
+As an example, consider that measurement devices sometimes fail
+
+69
+00:04:17,680 --> 00:04:22,910
+and that most data analysis procedures are not designed to detect these yet.
+
+70
+00:04:22,910 --> 00:04:26,790
+These data analysis procedures will still give you an answer.
+
+71
+00:04:26,790 --> 00:04:31,400
+The fact that it can be hard or impossible to notice an error just
+
+72
+00:04:31,400 --> 00:04:37,020
+from the reported results makes data visualization particularly important.
+
+73
+00:04:37,020 --> 00:04:40,640
+In this course, we will learn the basics of data visualization
+
+74
+00:04:40,640 --> 00:04:43,250
+and exploratory data analysis.
+
+75
+00:04:43,250 --> 00:04:46,280
+We will use motivating examples.
+
+76
+00:04:46,280 --> 00:04:49,580
+We will use the ggplot2 package to code.
+
+77
+00:04:49,580 --> 00:04:54,290
+To learn the basics, we will start with a somewhat artificial example, heights
+
+78
+00:04:54,290 --> 00:04:56,660
+reported by students.
+
+79
+00:04:56,660 --> 00:05:00,290
+Then we will cover two of the examples we mentioned,
+
+80
+00:05:00,290 --> 00:05:04,460
+world health and economics, and infectious diseases
+
+81
+00:05:04,460 --> 00:05:06,580
+trends in the United States.
+
+82
+00:05:06,580 --> 00:05:09,790
+Note that there&#39;s much more to data visualization that
+
+83
+00:05:09,790 --> 00:05:10,960
+will be covered here.
+
+84
+00:05:10,960 --> 00:05:15,060
+But you will get a very good introduction to the topic.
+

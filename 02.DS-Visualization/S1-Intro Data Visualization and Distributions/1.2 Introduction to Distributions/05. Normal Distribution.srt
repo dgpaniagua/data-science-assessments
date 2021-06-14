@@ -1,0 +1,432 @@
+0
+00:00:05,917 --> 00:00:07,750
+RAFAEL IRIZARRY: Histogram and density plots
+
+1
+00:00:07,750 --> 00:00:10,900
+provide excellent summaries of a distribution.
+
+2
+00:00:10,900 --> 00:00:13,600
+But can we summarize even further?
+
+3
+00:00:13,600 --> 00:00:16,420
+We often see the average and the standard deviation
+
+4
+00:00:16,420 --> 00:00:21,940
+used as a summary statistic for a list of numbers, a two number summary.
+
+5
+00:00:21,940 --> 00:00:26,230
+To understand what these summaries are and why they are so widely used,
+
+6
+00:00:26,230 --> 00:00:29,600
+we need to understand the normal distribution.
+
+7
+00:00:29,600 --> 00:00:33,080
+The normal distribution, also known as the bell curve
+
+8
+00:00:33,080 --> 00:00:36,130
+and as the Gaussian distribution, is one of the most famous
+
+9
+00:00:36,130 --> 00:00:38,980
+mathematical concepts in history.
+
+10
+00:00:38,980 --> 00:00:42,580
+A reason for this is that approximately normal distributions
+
+11
+00:00:42,580 --> 00:00:45,190
+occur in many situations.
+
+12
+00:00:45,190 --> 00:00:50,290
+Examples include, gambling winnings, heights, weights, blood pressure,
+
+13
+00:00:50,290 --> 00:00:54,470
+standardized test scores, and experimental measurement error.
+
+14
+00:00:54,470 --> 00:00:57,560
+There are explanations for this, but we explain it later.
+
+15
+00:00:57,560 --> 00:01:02,200
+Here we focus on how the normal distribution helps us summarize data.
+
+16
+00:01:02,200 --> 00:01:05,019
+Rather than using data, the normal distribution
+
+17
+00:01:05,019 --> 00:01:07,960
+is defined with a mathematical formula.
+
+18
+00:01:07,960 --> 00:01:09,700
+Let&#39;s see what this is.
+
+19
+00:01:09,700 --> 00:01:15,460
+For any interval, a and b, the proportion of values in the interval
+
+20
+00:01:15,460 --> 00:01:18,580
+can be computed using this formula.
+
+21
+00:01:18,580 --> 00:01:21,850
+You don&#39;t need to memorize or understand the details of the formula.
+
+22
+00:01:21,850 --> 00:01:24,580
+We&#39;re going to have R code that computes it for us.
+
+23
+00:01:24,580 --> 00:01:30,790
+But note that it is completely defined by just 2 parameters, m and s.
+
+24
+00:01:30,790 --> 00:01:35,400
+The rest of the symbols in the formula represent the interval ends, a and b,
+
+25
+00:01:35,400 --> 00:01:38,710
+and known mathematical constants, pi and e.
+
+26
+00:01:38,710 --> 00:01:43,360
+These two parameters, m and s, are referred to as the average, also
+
+27
+00:01:43,360 --> 00:01:46,090
+call the mean, that&#39;s why we use the letter m,
+
+28
+00:01:46,090 --> 00:01:50,560
+and the standard deviation of the distribution respectively.
+
+29
+00:01:50,560 --> 00:01:54,580
+The distribution is symmetric, centered at the average,
+
+30
+00:01:54,580 --> 00:01:59,740
+and most values, about 95%, are within two standard deviations
+
+31
+00:01:59,740 --> 00:02:01,450
+from the average.
+
+32
+00:02:01,450 --> 00:02:04,930
+Here&#39;s what the distribution looks like when the average is zero
+
+33
+00:02:04,930 --> 00:02:08,919
+and the standard deviation is one.
+
+34
+00:02:08,919 --> 00:02:12,970
+The fact that the distribution is defined by just two parameters
+
+35
+00:02:12,970 --> 00:02:17,740
+implies that if a dataset is approximated by a normal distribution,
+
+36
+00:02:17,740 --> 00:02:21,040
+all information needed to describe this distribution
+
+37
+00:02:21,040 --> 00:02:26,690
+can be encoded in just two numbers, the average and the standard deviation,
+
+38
+00:02:26,690 --> 00:02:30,880
+which we now define for an arbitrary list of numbers.
+
+39
+00:02:30,880 --> 00:02:34,640
+For a list of numbers contained in a vector that we&#39;ll call x,
+
+40
+00:02:34,640 --> 00:02:38,770
+the average is simply defined as a sum of x divided by the length of x.
+
+41
+00:02:38,770 --> 00:02:43,090
+Here&#39;s the code that you use in R. And the standard deviation
+
+42
+00:02:43,090 --> 00:02:45,810
+is defined with the following formula.
+
+43
+00:02:45,810 --> 00:02:50,050
+It&#39;s the square root of the sum of the differences between the values
+
+44
+00:02:50,050 --> 00:02:53,050
+and the mean squared divided by the length.
+
+45
+00:02:53,050 --> 00:02:56,260
+You can think of this as the average distance
+
+46
+00:02:56,260 --> 00:02:59,350
+between the values and their average.
+
+47
+00:02:59,350 --> 00:03:02,110
+Let&#39;s compute the average and the standard deviation
+
+48
+00:03:02,110 --> 00:03:05,080
+for the male heights, which we will store in an object
+
+49
+00:03:05,080 --> 00:03:07,150
+called x using this code.
+
+50
+00:03:10,140 --> 00:03:14,740
+The pre-built function, mean and SD can be used here.
+
+51
+00:03:14,740 --> 00:03:17,620
+We don&#39;t have to type out the code that we showed before,
+
+52
+00:03:17,620 --> 00:03:22,090
+because these functions are so common that pre-built functions exist.
+
+53
+00:03:22,090 --> 00:03:24,580
+So the code would actually look like this.
+
+54
+00:03:24,580 --> 00:03:29,920
+We see that the average height is 69.31 inches
+
+55
+00:03:29,920 --> 00:03:34,180
+and the standard deviation is 3.61 inches.
+
+56
+00:03:34,180 --> 00:03:38,080
+So here is a plot of the smooth density of our male heights.
+
+57
+00:03:38,080 --> 00:03:43,120
+We&#39;re making no assumptions here, other than assuming it&#39;s somewhat smooth.
+
+58
+00:03:43,120 --> 00:03:48,730
+And then overlaid with a black curve is the normal distribution
+
+59
+00:03:48,730 --> 00:03:54,910
+that has average 69.31, and standard deviation 3.61.
+
+60
+00:03:54,910 --> 00:03:57,220
+Note how close those two are.
+
+61
+00:03:57,220 --> 00:04:01,870
+This is telling us that the normal distribution approximate
+
+62
+00:04:01,870 --> 00:04:04,750
+the distribution of our male heights.
+
+63
+00:04:04,750 --> 00:04:09,370
+Before we continue, let&#39;s introduce the concept of standard units.
+
+64
+00:04:09,370 --> 00:04:12,290
+For data that is approximately normal, it
+
+65
+00:04:12,290 --> 00:04:15,560
+is convenient to think in terms of standard units.
+
+66
+00:04:15,560 --> 00:04:19,720
+The standard unit of value tells us how many standard deviations away
+
+67
+00:04:19,720 --> 00:04:22,150
+from the average this value is.
+
+68
+00:04:22,150 --> 00:04:26,110
+Specifically for a value x, we define the standard unit
+
+69
+00:04:26,110 --> 00:04:32,390
+as z equals x minus the average divided by the standard deviation.
+
+70
+00:04:32,390 --> 00:04:35,590
+If you look back at the formula for the normal distribution,
+
+71
+00:04:35,590 --> 00:04:40,930
+you notice that what is being exponentiated is negative z squared.
+
+72
+00:04:40,930 --> 00:04:45,790
+The maximum of e to the minus z squared over 2
+
+73
+00:04:45,790 --> 00:04:51,610
+is when z equals 0, which explains why the maximum of the distribution
+
+74
+00:04:51,610 --> 00:04:53,470
+is at the average.
+
+75
+00:04:53,470 --> 00:04:57,640
+It also explains the symmetry, since negative z squared
+
+76
+00:04:57,640 --> 00:05:00,430
+is symmetric around 0.
+
+77
+00:05:00,430 --> 00:05:02,830
+To understand why standard units are useful,
+
+78
+00:05:02,830 --> 00:05:08,090
+notice that if we convert normally distributed data into standard units,
+
+79
+00:05:08,090 --> 00:05:12,970
+we can quickly know if for example, a person is about average height, that
+
+80
+00:05:12,970 --> 00:05:15,520
+would mean z equals 0.
+
+81
+00:05:15,520 --> 00:05:19,340
+A person that is tall would be z equals 2.
+
+82
+00:05:19,340 --> 00:05:22,890
+A person that is short would be z equals negative 2.
+
+83
+00:05:22,890 --> 00:05:27,460
+And extremely rare occurrences, say a 7 footer or something like that,
+
+84
+00:05:27,460 --> 00:05:29,410
+would have a z bigger than 3.
+
+85
+00:05:29,410 --> 00:05:33,700
+Or someone very short would have a z smaller negative 3.
+
+86
+00:05:33,700 --> 00:05:37,600
+Note that it does not matter what the original units are.
+
+87
+00:05:37,600 --> 00:05:43,420
+These rules apply to any data that is approximately normal.
+
+88
+00:05:43,420 --> 00:05:48,270
+In R, we can quickly obtain standard units using the function scale.
+
+89
+00:05:48,270 --> 00:05:51,460
+Type in this code.
+
+90
+00:05:51,460 --> 00:05:53,560
+Now back to our example.
+
+91
+00:05:53,560 --> 00:05:57,290
+To see how many men are within two standard deviations from the average,
+
+92
+00:05:57,290 --> 00:06:00,940
+now that we were already converted to standard units, all we have to do
+
+93
+00:06:00,940 --> 00:06:07,150
+is count the number of z&#39;s that are less than 2 and bigger than negative 2,
+
+94
+00:06:07,150 --> 00:06:08,690
+and then divide by the total.
+
+95
+00:06:08,690 --> 00:06:12,190
+So we take the mean of this quantity that you see here in the code,
+
+96
+00:06:12,190 --> 00:06:17,170
+and we see that the proportion is 0.951.
+
+97
+00:06:17,170 --> 00:06:19,720
+Note that it&#39;s about 95%, which is exactly
+
+98
+00:06:19,720 --> 00:06:22,790
+what the normal distribution predicts.
+
+99
+00:06:22,790 --> 00:06:24,100
+So it&#39;s quite useful.
+
+100
+00:06:24,100 --> 00:06:27,040
+If we can assume that the data is approximately normal,
+
+101
+00:06:27,040 --> 00:06:30,730
+at least for this interval, we can predict the proportion
+
+102
+00:06:30,730 --> 00:06:33,160
+without actually looking at the data.
+
+103
+00:06:33,160 --> 00:06:36,520
+We simply know that 95% of the data for normally
+
+104
+00:06:36,520 --> 00:06:40,460
+distributed data is between negative 2 and 2.
+
+105
+00:06:40,460 --> 00:06:45,550
+Now to further confirm that in fact the approximation is a good one,
+
+106
+00:06:45,550 --> 00:06:47,740
+we need to look at other intervals.
+
+107
+00:06:47,740 --> 00:06:52,560
+And for this, we will use quantile plots.
+
