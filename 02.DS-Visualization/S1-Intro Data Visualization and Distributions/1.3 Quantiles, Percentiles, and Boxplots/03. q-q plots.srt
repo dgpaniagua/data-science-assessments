@@ -1,0 +1,184 @@
+0
+00:00:05,610 --> 00:00:08,610
+RAFAEL IRIZARRY: In a previous video, we described
+
+1
+00:00:08,610 --> 00:00:12,330
+how, if a distribution is well approximated
+
+2
+00:00:12,330 --> 00:00:18,270
+by the normal distribution, we can have a very useful and short summary.
+
+3
+00:00:18,270 --> 00:00:22,620
+But to check if, in fact, it is a good approximation,
+
+4
+00:00:22,620 --> 00:00:26,730
+we can use quantile-quantile plots, or q-q plots.
+
+5
+00:00:26,730 --> 00:00:31,980
+We start by defining a series of proportion, for example, p equals 0.05,
+
+6
+00:00:31,980 --> 00:00:35,940
+0.10, 0.15, up to 0.95.
+
+7
+00:00:35,940 --> 00:00:41,130
+Once this is defined for each p, we determine the value q,
+
+8
+00:00:41,130 --> 00:00:46,780
+so that the proportion of the values in the data below q is p.
+
+9
+00:00:46,780 --> 00:00:50,192
+The q&#39;s are referred to as the quantiles.
+
+10
+00:00:50,192 --> 00:00:52,800
+To give a quick example, for the male heights
+
+11
+00:00:52,800 --> 00:00:59,250
+data that we showed in previous videos, we have that 50% of the data
+
+12
+00:00:59,250 --> 00:01:03,370
+is below 69.5 inches.
+
+13
+00:01:03,370 --> 00:01:11,700
+So this means that if p equals 0.5, then the q associated with that p is 69.5.
+
+14
+00:01:11,700 --> 00:01:15,690
+Now, we can make this computation for a series of p&#39;s.
+
+15
+00:01:15,690 --> 00:01:21,010
+If the quantiles for the data match the quantiles for the normal distribution,
+
+16
+00:01:21,010 --> 00:01:27,570
+then it must be because the data is approximated by a normal distribution.
+
+17
+00:01:27,570 --> 00:01:31,650
+To obtain the quantiles for the data, we can use the quantile function
+
+18
+00:01:31,650 --> 00:01:32,520
+in r like this.
+
+19
+00:01:32,520 --> 00:01:36,780
+So we&#39;re going to define an object called observe quantiles, and calculate
+
+20
+00:01:36,780 --> 00:01:40,680
+the quantiles for x at the series of values of p,
+
+21
+00:01:40,680 --> 00:01:43,440
+which is stored in the object p.
+
+22
+00:01:43,440 --> 00:01:46,470
+To obtain the theoretical normal distribution quantiles
+
+23
+00:01:46,470 --> 00:01:49,320
+with the corresponding average and standard deviation,
+
+24
+00:01:49,320 --> 00:01:51,270
+we use the qnorm function, like this.
+
+25
+00:01:51,270 --> 00:01:54,990
+We&#39;re going to find an object called theoretical quantiles.
+
+26
+00:01:54,990 --> 00:01:58,710
+To see if they match or not, we can plot them against each other,
+
+27
+00:01:58,710 --> 00:02:02,710
+and then draw an identity line to see if the points fall on the line.
+
+28
+00:02:02,710 --> 00:02:05,370
+We can do this using the plot function, like this.
+
+29
+00:02:05,370 --> 00:02:08,150
+Very simple piece of code produces this plot.
+
+30
+00:02:10,919 --> 00:02:14,100
+Note that the points fall almost on the line,
+
+31
+00:02:14,100 --> 00:02:19,530
+meaning that the normal approximation is a pretty good approximation.
+
+32
+00:02:19,530 --> 00:02:21,050
+Now, one final note.
+
+33
+00:02:21,050 --> 00:02:25,350
+This code becomes slightly simpler if we use standard units.
+
+34
+00:02:25,350 --> 00:02:27,860
+If we use standard units, we don&#39;t have to define
+
+35
+00:02:27,860 --> 00:02:31,430
+the mean and the standard deviation in the function qnorm.
+
+36
+00:02:31,430 --> 00:02:35,250
+So the code simplifies and looks like this.
+
+37
+00:02:35,250 --> 00:02:39,050
+Now, using the histogram, the density plots, and the q-q plots,
+
+38
+00:02:39,050 --> 00:02:43,610
+we have become convinced that the male height data is well approximated
+
+39
+00:02:43,610 --> 00:02:45,630
+with a normal distribution.
+
+40
+00:02:45,630 --> 00:02:52,020
+So in this case, we can report back to ET a very succinct summary.
+
+41
+00:02:52,020 --> 00:02:54,830
+Male heights follow a normal distribution,
+
+42
+00:02:54,830 --> 00:03:01,880
+with an average of 69.44 inches, and a standard deviation of 3.27 inches.
+
+43
+00:03:01,880 --> 00:03:05,240
+With this information, ET will have everything
+
+44
+00:03:05,240 --> 00:03:09,380
+he needs to know to describe, and know what to expect,
+
+45
+00:03:09,380 --> 00:03:12,160
+when he meets our male students.
+
