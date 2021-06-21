@@ -1,0 +1,448 @@
+0
+00:00:05,790 --> 00:00:09,190
+RAFAEL IRIZARRY: We say that two events are independent if the outcome of one
+
+1
+00:00:09,190 --> 00:00:10,920
+does not affect the other.
+
+2
+00:00:10,920 --> 00:00:14,180
+The classic example are coin tosses.
+
+3
+00:00:14,180 --> 00:00:18,240
+Every time we toss a fair coin, the probability of seeing heads
+
+4
+00:00:18,240 --> 00:00:22,860
+is 1/2 regardless of what previous tosses have revealed.
+
+5
+00:00:22,860 --> 00:00:28,710
+The same is true when we pick beads from an urn with replacement.
+
+6
+00:00:28,710 --> 00:00:31,860
+In the example we saw earlier, the probability of red
+
+7
+00:00:31,860 --> 00:00:36,780
+was .40 regardless of previous draws.
+
+8
+00:00:36,780 --> 00:00:40,860
+Many examples of events that are not independent come from card games.
+
+9
+00:00:40,860 --> 00:00:43,530
+When we deal the first card, the probability of getting, say,
+
+10
+00:00:43,530 --> 00:00:45,870
+a king is 1 in 13.
+
+11
+00:00:45,870 --> 00:00:48,210
+This is because there are 13 possibilities.
+
+12
+00:00:48,210 --> 00:00:54,540
+You can get an ace, a 2, a 3, a 4, et cetera, 10, jack, queen or king.
+
+13
+00:00:54,540 --> 00:01:00,060
+Now, if we deal a king for the first card and I don&#39;t replace it,
+
+14
+00:01:00,060 --> 00:01:03,300
+then the problem of getting a king in the second card
+
+15
+00:01:03,300 --> 00:01:06,780
+is less because there are only three kings left.
+
+16
+00:01:06,780 --> 00:01:09,540
+The probability is 3 out of not 52--
+
+17
+00:01:09,540 --> 00:01:12,780
+because we already dealt one card-- but out of 51.
+
+18
+00:01:12,780 --> 00:01:15,690
+These events are, therefore, not independent.
+
+19
+00:01:15,690 --> 00:01:19,410
+The first outcome affects the second.
+
+20
+00:01:19,410 --> 00:01:21,990
+To see an extreme case of non-independent events,
+
+21
+00:01:21,990 --> 00:01:25,590
+consider an example of drawing five beads at random
+
+22
+00:01:25,590 --> 00:01:28,050
+without replacement from an urn.
+
+23
+00:01:28,050 --> 00:01:30,810
+Three are blue, two are red.
+
+24
+00:01:30,810 --> 00:01:34,530
+I&#39;m going to generate data like this using the sample function
+
+25
+00:01:34,530 --> 00:01:36,180
+and assign it to x.
+
+26
+00:01:36,180 --> 00:01:38,290
+You can&#39;t see the outcomes.
+
+27
+00:01:38,290 --> 00:01:43,470
+Now, if I ask you to guess the color of the first bead, what do you guess?
+
+28
+00:01:43,470 --> 00:01:48,510
+Since there&#39;s more blue beads, there&#39;s actually a 0.6 chance of seeing blue.
+
+29
+00:01:48,510 --> 00:01:51,120
+That&#39;s probably what you guess.
+
+30
+00:01:51,120 --> 00:01:55,860
+But now, I&#39;m going to show you the outcomes of the other four.
+
+31
+00:01:55,860 --> 00:02:00,300
+The second, third, fourth and fifth outcomes you can see here.
+
+32
+00:02:00,300 --> 00:02:03,960
+You can see that the three blue beads have already come out.
+
+33
+00:02:03,960 --> 00:02:06,600
+This affects the probability of the first.
+
+34
+00:02:06,600 --> 00:02:08,410
+They are not independent.
+
+35
+00:02:08,410 --> 00:02:09,660
+So would you still guess blue?
+
+36
+00:02:09,660 --> 00:02:10,289
+Of course not.
+
+37
+00:02:10,288 --> 00:02:12,790
+Now, you know that the probability of red is 1.
+
+38
+00:02:12,790 --> 00:02:14,900
+These events are not independent.
+
+39
+00:02:14,900 --> 00:02:20,760
+The probabilities change once you see the other outcomes.
+
+40
+00:02:20,760 --> 00:02:23,970
+When events are not independent, conditional probabilities
+
+41
+00:02:23,970 --> 00:02:28,290
+are useful and necessary to make correct calculations.
+
+42
+00:02:28,290 --> 00:02:31,170
+We already saw an example of a conditional probability.
+
+43
+00:02:31,170 --> 00:02:34,260
+We computed the probability that a second dealt card is
+
+44
+00:02:34,260 --> 00:02:38,880
+a king given that the first was a king.
+
+45
+00:02:38,880 --> 00:02:43,350
+In probability, we use the following notation.
+
+46
+00:02:43,350 --> 00:02:45,780
+We use this dash like this as a shorthand
+
+47
+00:02:45,780 --> 00:02:47,610
+for given that or conditional on.
+
+48
+00:02:47,610 --> 00:02:50,010
+These are synonyms.
+
+49
+00:02:50,010 --> 00:02:54,240
+Note that, when two events, say A and B, are independent,
+
+50
+00:02:54,240 --> 00:02:56,980
+we have the following equation.
+
+51
+00:02:56,980 --> 00:02:59,670
+The probability of A given B is equal to the probability of A.
+
+52
+00:02:59,670 --> 00:03:01,800
+It doesn&#39;t matter what B is.
+
+53
+00:03:01,800 --> 00:03:04,500
+The probability A is unchanged.
+
+54
+00:03:04,500 --> 00:03:07,420
+This is the mathematical way of saying it.
+
+55
+00:03:07,420 --> 00:03:10,200
+And in fact, this can be considered the mathematical definition
+
+56
+00:03:10,200 --> 00:03:12,900
+of independence.
+
+57
+00:03:12,900 --> 00:03:13,730
+All right now.
+
+58
+00:03:13,730 --> 00:03:18,030
+If we want to know the probability of two events, say A and B, occurring,
+
+59
+00:03:18,030 --> 00:03:20,980
+we can use the multiplication rule.
+
+60
+00:03:20,980 --> 00:03:25,500
+So the probability of A and B is equal to the probability of A multiplied
+
+61
+00:03:25,500 --> 00:03:30,310
+by the probability of B given that A already happened.
+
+62
+00:03:30,310 --> 00:03:32,820
+Let&#39;s use blackjack as an example.
+
+63
+00:03:32,820 --> 00:03:39,280
+In blackjack, you get assigned two random cards without replacement.
+
+64
+00:03:39,280 --> 00:03:41,910
+Then, you can ask for more.
+
+65
+00:03:41,910 --> 00:03:46,980
+The goal is to get closer to 21 than the dealer without going over.
+
+66
+00:03:46,980 --> 00:03:49,600
+Face cards are worth 10 points.
+
+67
+00:03:49,600 --> 00:03:50,760
+So is the 10 card.
+
+68
+00:03:50,760 --> 00:03:52,440
+That&#39;s worth 10 points, too.
+
+69
+00:03:52,440 --> 00:03:55,630
+And aces are worth either 11 or 1.
+
+70
+00:03:55,630 --> 00:04:00,430
+So if you get an ace and a face card, you win automatically.
+
+71
+00:04:00,430 --> 00:04:04,710
+So, in blackjack, to calculate the chances of getting 21
+
+72
+00:04:04,710 --> 00:04:08,040
+in the following way, first we get an ace
+
+73
+00:04:08,040 --> 00:04:12,900
+and then we get a face card or a 10, we compute the problem of the first
+
+74
+00:04:12,900 --> 00:04:17,100
+being an ace and then multiply by the probability of a face card
+
+75
+00:04:17,100 --> 00:04:21,690
+or a 10 given that the first card was an ace.
+
+76
+00:04:21,690 --> 00:04:24,240
+This calculation is 1/13--
+
+77
+00:04:24,240 --> 00:04:25,620
+chance of getting an ace--
+
+78
+00:04:25,620 --> 00:04:29,790
+times the chance of getting a card with value 10
+
+79
+00:04:29,790 --> 00:04:35,130
+given that we already saw an ace, which is 16 out of 51.
+
+80
+00:04:35,130 --> 00:04:37,500
+We&#39;ve already taken one card out.
+
+81
+00:04:37,500 --> 00:04:38,970
+This is approximately 2%.
+
+82
+00:04:41,850 --> 00:04:45,480
+The multiplicative rule also applies to more than two events.
+
+83
+00:04:45,480 --> 00:04:48,900
+We can use induction to expand for more than two.
+
+84
+00:04:48,900 --> 00:04:53,330
+So the probability of A and B and C is equal to the probability of A times
+
+85
+00:04:53,330 --> 00:04:57,240
+the probability of B given that A happened times the probability of C
+
+86
+00:04:57,240 --> 00:04:59,820
+that A and b happened.
+
+87
+00:04:59,820 --> 00:05:03,750
+When we have independent events, the multiplication rule becomes simpler.
+
+88
+00:05:03,750 --> 00:05:06,630
+We simply multiply the three probabilities.
+
+89
+00:05:06,630 --> 00:05:11,490
+But we have to be very careful when we use a multiplicative rule in practice.
+
+90
+00:05:11,490 --> 00:05:13,470
+We&#39;re assuming independence, and this can
+
+91
+00:05:13,470 --> 00:05:17,550
+result in very different and incorrect probability calculations
+
+92
+00:05:17,550 --> 00:05:20,340
+when we don&#39;t actually have independence.
+
+93
+00:05:20,340 --> 00:05:23,820
+This could have dire consequences, for example, in a trial
+
+94
+00:05:23,820 --> 00:05:29,290
+if an expert doesn&#39;t really know the multiplication rule and how to use it.
+
+95
+00:05:29,290 --> 00:05:31,110
+So let&#39;s use an example.
+
+96
+00:05:31,110 --> 00:05:33,780
+This is loosely based on something that actually happened.
+
+97
+00:05:33,780 --> 00:05:37,230
+Imagine a court case in which the suspect was described
+
+98
+00:05:37,230 --> 00:05:41,880
+to have a mustache and a beard, and the prosecution brings in an expert
+
+99
+00:05:41,880 --> 00:05:46,410
+to argue that, because 1 in 10 men have beards and 1 in 5 men
+
+100
+00:05:46,410 --> 00:05:53,310
+has mustaches, using the multiplication rule, this means that only 2% of men
+
+101
+00:05:53,310 --> 00:05:55,600
+have both beards and mustaches--
+
+102
+00:05:55,600 --> 00:05:58,950
+1/10 times 1/5.
+
+103
+00:05:58,950 --> 00:06:01,860
+2% is a pretty unlikely event.
+
+104
+00:06:01,860 --> 00:06:06,330
+However, to multiply like this, we need to assume independence.
+
+105
+00:06:06,330 --> 00:06:09,270
+And in this case, it&#39;s clearly not true.
+
+106
+00:06:09,270 --> 00:06:14,130
+The conditional probability of a man having a mustache conditional on them
+
+107
+00:06:14,130 --> 00:06:16,660
+having a beard is quite high.
+
+108
+00:06:16,660 --> 00:06:18,490
+It&#39;s about 95%.
+
+109
+00:06:18,490 --> 00:06:22,320
+So the correct calculation actually gives us a much higher probability.
+
+110
+00:06:22,320 --> 00:06:23,790
+It&#39;s 9%.
+
+111
+00:06:23,790 --> 00:06:27,410
+So there&#39;s definitely reasonable doubt.
+

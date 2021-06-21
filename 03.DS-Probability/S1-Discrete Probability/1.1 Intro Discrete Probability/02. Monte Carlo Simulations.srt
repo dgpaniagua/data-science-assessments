@@ -1,0 +1,284 @@
+0
+00:00:06,101 --> 00:00:08,600
+RAFAEL IRIZARRY: Computers provide a way to actually perform
+
+1
+00:00:08,600 --> 00:00:12,740
+the simple random experiments, such as the one we did before.
+
+2
+00:00:12,740 --> 00:00:18,230
+Pick a bead at random from a bag or an urn with 3 blue beads and 2 red ones.
+
+3
+00:00:18,230 --> 00:00:23,340
+Random number generators permit us to mimic the process of picking at random.
+
+4
+00:00:23,340 --> 00:00:27,290
+An example in R is the sample function.
+
+5
+00:00:27,290 --> 00:00:30,350
+We demonstrate its use showing you some code.
+
+6
+00:00:30,350 --> 00:00:34,280
+First, use the rep function to generate the urn.
+
+7
+00:00:34,280 --> 00:00:38,840
+We create an urn with 2 red and 3 blues.
+
+8
+00:00:38,840 --> 00:00:41,600
+You can see when we type beads we see this.
+
+9
+00:00:41,600 --> 00:00:44,300
+Now, we can use a sample function to pick one at random.
+
+10
+00:00:44,300 --> 00:00:48,710
+If we type sample beads comma 1, in this case, we get a blue.
+
+11
+00:00:48,710 --> 00:00:53,640
+This line of code produces one random outcome.
+
+12
+00:00:53,640 --> 00:00:57,050
+Now, we want to repeat this experiment over and over.
+
+13
+00:00:57,050 --> 00:01:01,260
+However, it is, of course, impossible to repeat forever.
+
+14
+00:01:01,260 --> 00:01:04,970
+Instead, we repeat the experiment a large enough number of times
+
+15
+00:01:04,970 --> 00:01:08,060
+to make the results practically equivalent to doing it
+
+16
+00:01:08,060 --> 00:01:10,040
+over and over forever.
+
+17
+00:01:10,040 --> 00:01:13,550
+This is an example of a Monte Carlo simulation.
+
+18
+00:01:13,550 --> 00:01:17,090
+Note that much of what mathematical and theoretical statisticians study--
+
+19
+00:01:17,090 --> 00:01:19,490
+something we do not cover in this course--
+
+20
+00:01:19,490 --> 00:01:23,930
+relates to providing rigorous definitions of practically equivalent,
+
+21
+00:01:23,930 --> 00:01:27,590
+as well as studying how close a large number of experiment
+
+22
+00:01:27,590 --> 00:01:33,200
+gets us to what happens in the limit, the limit meaning if we did it forever.
+
+23
+00:01:33,200 --> 00:01:35,990
+Later in this module, we provide a practical approach
+
+24
+00:01:35,990 --> 00:01:39,200
+to deciding what is large enough.
+
+25
+00:01:39,200 --> 00:01:41,720
+To perform our first Monte Carlo simulation,
+
+26
+00:01:41,720 --> 00:01:43,940
+we use the replicate function.
+
+27
+00:01:43,940 --> 00:01:48,940
+This permits us to repeat the same task any number of times we want.
+
+28
+00:01:48,940 --> 00:01:53,300
+Here, we repeat the random event 10,000 times.
+
+29
+00:01:53,300 --> 00:01:57,140
+We set B to be 10,000, then we use the replicate function
+
+30
+00:01:57,140 --> 00:02:01,670
+to sample from the beads 10,000 times.
+
+31
+00:02:01,670 --> 00:02:04,640
+We can now see if, in fact, our definition
+
+32
+00:02:04,640 --> 00:02:09,410
+is in agreement with this Monte Carlo simulation approximation.
+
+33
+00:02:09,410 --> 00:02:14,030
+We can use table, for example, to see the distribution.
+
+34
+00:02:14,030 --> 00:02:17,010
+And then we can use prop.table to give us the proportions.
+
+35
+00:02:17,010 --> 00:02:20,300
+And we see that, in fact, the Monte Carlo simulation
+
+36
+00:02:20,300 --> 00:02:28,310
+gives a very good approximation with 0.5962 for blue and 0.4038 for red.
+
+37
+00:02:28,310 --> 00:02:32,120
+We didn&#39;t get exactly 0.6 and exactly 0.4,
+
+38
+00:02:32,120 --> 00:02:35,900
+but statistical theory tells us that, if we make B large enough,
+
+39
+00:02:35,900 --> 00:02:39,920
+we can get as close as we want to those numbers.
+
+40
+00:02:39,920 --> 00:02:42,440
+We just covered a simple and not very useful
+
+41
+00:02:42,440 --> 00:02:44,750
+example of Monte Carlo simulations.
+
+42
+00:02:44,750 --> 00:02:48,110
+But we will use Monte Carlo simulation to estimate probabilities
+
+43
+00:02:48,110 --> 00:02:52,400
+in cases in which it is harder to compute the exact ones.
+
+44
+00:02:52,400 --> 00:02:55,910
+Before we go into more complex examples, we still
+
+45
+00:02:55,910 --> 00:03:00,830
+use simple ones to demonstrate the computing tools available in R.
+
+46
+00:03:00,830 --> 00:03:03,080
+Let&#39;s start by noting that we don&#39;t actually
+
+47
+00:03:03,080 --> 00:03:06,270
+have to use replicate in this particular example.
+
+48
+00:03:06,270 --> 00:03:09,980
+This is because the function sample has an argument that
+
+49
+00:03:09,980 --> 00:03:13,400
+permits us to pick more than one element from the urn.
+
+50
+00:03:13,400 --> 00:03:17,750
+However, by default, this selection occurs without replacement.
+
+51
+00:03:17,750 --> 00:03:22,610
+After a bead is selected, it is not put back in the urn.
+
+52
+00:03:22,610 --> 00:03:26,960
+Note what happens when we ask to randomly select 5 beads.
+
+53
+00:03:26,960 --> 00:03:28,480
+Let&#39;s do it over and over again.
+
+54
+00:03:28,480 --> 00:03:29,480
+Let&#39;s do it three times.
+
+55
+00:03:32,000 --> 00:03:36,740
+This results in a rearrangement that always has three blue and two
+
+56
+00:03:36,740 --> 00:03:38,460
+red beads.
+
+57
+00:03:38,460 --> 00:03:40,940
+If we asked for six beads, then we get an error.
+
+58
+00:03:40,940 --> 00:03:44,060
+It tells us you don&#39;t have enough beads in here to get six.
+
+59
+00:03:44,060 --> 00:03:49,290
+This is because it&#39;s doing it without replacement.
+
+60
+00:03:49,290 --> 00:03:52,280
+However, this function, the sample function,
+
+61
+00:03:52,280 --> 00:03:55,310
+can be used directly-- again, without the replicate--
+
+62
+00:03:55,310 --> 00:03:57,980
+to repeat the same experiment of picking 1 out
+
+63
+00:03:57,980 --> 00:04:01,370
+of 5 beads over and over under the same conditions.
+
+64
+00:04:01,370 --> 00:04:04,910
+To do this, we sample with replacement.
+
+65
+00:04:04,910 --> 00:04:08,750
+After we pick the bead we put it back in the urn.
+
+66
+00:04:08,750 --> 00:04:12,830
+We can tell sample to do this by changing the replace argument which
+
+67
+00:04:12,830 --> 00:04:15,560
+defaults to false to true.
+
+68
+00:04:15,560 --> 00:04:17,160
+We do it like this.
+
+69
+00:04:17,160 --> 00:04:20,690
+And when we do this, we see that we get very similar answers to what
+
+70
+00:04:20,690 --> 00:04:24,190
+we got using the replicate function.
+

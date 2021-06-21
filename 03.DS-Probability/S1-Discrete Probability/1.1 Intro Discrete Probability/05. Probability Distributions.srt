@@ -1,0 +1,76 @@
+0
+00:00:00,000 --> 00:00:05,920
+
+
+1
+00:00:05,920 --> 00:00:08,770
+RAFAEL IRIZARRY: Defining a distribution for categorical outcomes
+
+2
+00:00:08,770 --> 00:00:10,810
+is relatively straight forward.
+
+3
+00:00:10,810 --> 00:00:14,290
+We simply assign a probability to each category.
+
+4
+00:00:14,290 --> 00:00:18,160
+In cases that can be thought of as beads in an urn, for each bead type,
+
+5
+00:00:18,160 --> 00:00:21,490
+the proportion defines the distribution.
+
+6
+00:00:21,490 --> 00:00:24,070
+Another example comes from polling.
+
+7
+00:00:24,070 --> 00:00:27,610
+If you're are randomly calling likely voters from a population that
+
+8
+00:00:27,610 --> 00:00:34,810
+has 44% Democrat, 44% Republican, 10% undecided, and 2% green,
+
+9
+00:00:34,810 --> 00:00:39,730
+these proportions define the probability for each group.
+
+10
+00:00:39,730 --> 00:00:42,220
+For this example, the probability distribution
+
+11
+00:00:42,220 --> 00:00:44,890
+is simply these four proportions.
+
+12
+00:00:44,890 --> 00:00:49,670
+Again, categorical data makes it easy to define probability distributions.
+
+13
+00:00:49,670 --> 00:00:54,200
+However, later in applications that are more common in data science,
+
+14
+00:00:54,200 --> 00:00:58,550
+we will learn about probability distributions for continuous variables.
+
+15
+00:00:58,550 --> 00:01:01,220
+In this case, it'll get a little bit more complex.
+
+16
+00:01:01,220 --> 00:01:04,280
+But for now, we're going to stick to discrete probabilities
+
+17
+00:01:04,280 --> 00:01:06,480
+before we move on.
+
+18
+00:01:06,480 --> 00:01:09,419
+
+
