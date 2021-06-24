@@ -1,0 +1,536 @@
+0
+00:00:05,409 --> 00:00:07,200
+RAFAEL IRIZARRY: In our very first example,
+
+1
+00:00:07,200 --> 00:00:09,720
+we imagine an urn with 5 beads--
+
+2
+00:00:09,720 --> 00:00:11,400
+3 blue, 2 red.
+
+3
+00:00:11,400 --> 00:00:14,880
+To review, to compute the probability distribution of 1 draw,
+
+4
+00:00:14,880 --> 00:00:18,090
+we simply listed out all the possibilities-- there were 5--
+
+5
+00:00:18,090 --> 00:00:21,360
+and then for each event, we counted how many of these possibilities
+
+6
+00:00:21,360 --> 00:00:23,380
+were associated with that event.
+
+7
+00:00:23,380 --> 00:00:28,230
+So for example, for the blue beads the probability is 0.6.
+
+8
+00:00:28,230 --> 00:00:31,320
+For more complicated examples, however, these computations
+
+9
+00:00:31,320 --> 00:00:34,240
+are not necessarily straightforward.
+
+10
+00:00:34,240 --> 00:00:36,240
+For example, what does the probability that if I
+
+11
+00:00:36,240 --> 00:00:39,360
+draw 5 cards without replacement, I get all cards
+
+12
+00:00:39,360 --> 00:00:42,620
+of the same suit, what is called a flush in poker?
+
+13
+00:00:42,620 --> 00:00:45,690
+Discrete probability teaches us how to make
+
+14
+00:00:45,690 --> 00:00:48,240
+these computations using mathematics.
+
+15
+00:00:48,240 --> 00:00:50,760
+Here we focus on how to use R code.
+
+16
+00:00:50,760 --> 00:00:53,350
+So we&#39;re going to use card games as examples.
+
+17
+00:00:53,350 --> 00:00:55,980
+So let&#39;s start by constructing a deck of cards
+
+18
+00:00:55,980 --> 00:01:01,470
+using R. For this, we will use the function expand.grid and the function
+
+19
+00:01:01,470 --> 00:01:02,610
+Paste.
+
+20
+00:01:02,610 --> 00:01:06,720
+We use Paste to create strings by joining smaller strings.
+
+21
+00:01:06,720 --> 00:01:10,140
+For example, if we have the number and the suit for a card,
+
+22
+00:01:10,140 --> 00:01:16,680
+in 2 different variables we can create the card name using Paste like this.
+
+23
+00:01:16,680 --> 00:01:19,620
+It also works on pairs of vectors.
+
+24
+00:01:19,620 --> 00:01:21,720
+It performs the operation element-wise.
+
+25
+00:01:21,720 --> 00:01:27,900
+So if we type this line of code, we get the following result.
+
+26
+00:01:27,900 --> 00:01:33,370
+The function expand.grid gives us all the combinations of 2 lists.
+
+27
+00:01:33,370 --> 00:01:36,840
+So for example, if you have blue and black pants
+
+28
+00:01:36,840 --> 00:01:40,590
+and white, gray, and plaid shirt, all your combinations
+
+29
+00:01:40,590 --> 00:01:44,160
+can be computed using the expand.grid function like this.
+
+30
+00:01:44,160 --> 00:01:47,980
+You can see all 6 combinations.
+
+31
+00:01:47,980 --> 00:01:51,030
+So here&#39;s how we generate a deck of cards.
+
+32
+00:01:51,030 --> 00:01:55,680
+We define the four suits, we define the 13 numbers,
+
+33
+00:01:55,680 --> 00:02:00,450
+and then we create the deck using expand.grid and then pasting together
+
+34
+00:02:00,450 --> 00:02:05,010
+the 2 columns that expand.grid creates.
+
+35
+00:02:05,010 --> 00:02:09,300
+Now that we have a deck constructed, we can now start answering questions
+
+36
+00:02:09,300 --> 00:02:11,220
+about probability.
+
+37
+00:02:11,220 --> 00:02:13,450
+Let&#39;s start by doing something simple.
+
+38
+00:02:13,450 --> 00:02:19,290
+Let&#39;s double-check that the probability of a king in the first card is 1 in 13.
+
+39
+00:02:19,290 --> 00:02:22,170
+We simply compute the proportion of possible outcomes
+
+40
+00:02:22,170 --> 00:02:24,340
+that satisfy our condition.
+
+41
+00:02:24,340 --> 00:02:28,530
+So we create a vector that contains the four ways we can get a king.
+
+42
+00:02:28,530 --> 00:02:30,540
+That&#39;s going to be the kings variable.
+
+43
+00:02:30,540 --> 00:02:35,130
+And then we simply check what proportion of the deck is one of these cards
+
+44
+00:02:35,130 --> 00:02:37,500
+and we get the answer that we expect--
+
+45
+00:02:37,500 --> 00:02:42,250
+0.076 dot dot dot, which is 1 in 13.
+
+46
+00:02:42,250 --> 00:02:48,120
+Now, how about the conditional probability of the second card being a king,
+
+47
+00:02:48,120 --> 00:02:50,820
+given that the first was a king?
+
+48
+00:02:50,820 --> 00:02:56,430
+Earlier we deduced that if 1 king is already out, then there&#39;s 51 left.
+
+49
+00:02:56,430 --> 00:02:58,640
+So the probability is 3 in 51.
+
+50
+00:02:58,640 --> 00:03:03,060
+But let&#39;s confirm by listing out all possible outcomes.
+
+51
+00:03:03,060 --> 00:03:06,690
+To do this, we&#39;re going to use the combinations and permutations
+
+52
+00:03:06,690 --> 00:03:10,830
+functions that are available from the gtools package.
+
+53
+00:03:10,830 --> 00:03:15,690
+The permutations function computes for any list of size n
+
+54
+00:03:15,690 --> 00:03:19,260
+all the different ways we can select R items.
+
+55
+00:03:19,260 --> 00:03:21,030
+So here&#39;s an example--
+
+56
+00:03:21,030 --> 00:03:26,030
+here all the ways we can choose 2 numbers from the list 1, 2, 3, 4, 5.
+
+57
+00:03:28,750 --> 00:03:30,550
+Notice that the order matters.
+
+58
+00:03:30,550 --> 00:03:35,700
+So 3, 1 is different than 1, 3, So it appears in our permutations.
+
+59
+00:03:35,700 --> 00:03:38,460
+Also notice that 1, 1; 2, 2; and 3, 3 don&#39;t
+
+60
+00:03:38,460 --> 00:03:44,220
+appear, because once we pick a number, it can&#39;t appear again.
+
+61
+00:03:44,220 --> 00:03:47,920
+Optionally for this function permutations, we can add a vector.
+
+62
+00:03:47,920 --> 00:03:54,360
+So for example, if you want to see 5 random 7-digit phone numbers out
+
+63
+00:03:54,360 --> 00:03:58,290
+of all possible phone numbers, you could type code like this.
+
+64
+00:03:58,290 --> 00:04:02,340
+Here we&#39;re defining a vector of digits that goes from 0 to 9 rather than 1
+
+65
+00:04:02,340 --> 00:04:03,540
+through 10.
+
+66
+00:04:03,540 --> 00:04:09,030
+So these four lines of code generate all phone numbers, picks 5 at random,
+
+67
+00:04:09,030 --> 00:04:12,270
+and then shows them to you.
+
+68
+00:04:12,270 --> 00:04:17,040
+To compute all possible ways that we can choose 2 cards when the order matters,
+
+69
+00:04:17,040 --> 00:04:19,769
+we simply type the following piece of code.
+
+70
+00:04:19,769 --> 00:04:21,450
+Here we use permutations.
+
+71
+00:04:21,450 --> 00:04:24,450
+There&#39;s 52 cards, we&#39;re going to choose 2,
+
+72
+00:04:24,450 --> 00:04:27,870
+and we&#39;re going to select them out of the vector that includes our card
+
+73
+00:04:27,870 --> 00:04:31,170
+names, which we called deck earlier.
+
+74
+00:04:31,170 --> 00:04:34,200
+This is going to be a matrix with 2 dimensions, 2 columns,
+
+75
+00:04:34,200 --> 00:04:38,380
+and in this case, it&#39;s going to have 2,652 rows.
+
+76
+00:04:38,380 --> 00:04:41,230
+Those are all the permutations.
+
+77
+00:04:41,230 --> 00:04:44,490
+Now, we&#39;re going to define the first card and the second card
+
+78
+00:04:44,490 --> 00:04:50,510
+by grabbing the first and second columns using this simple piece of code.
+
+79
+00:04:50,510 --> 00:04:56,190
+And now we can, for example, check how many cases
+
+80
+00:04:56,190 --> 00:04:59,040
+have a first card that is a king--
+
+81
+00:04:59,040 --> 00:05:00,660
+that&#39;s 204.
+
+82
+00:05:00,660 --> 00:05:03,990
+And now to find the conditional probability,
+
+83
+00:05:03,990 --> 00:05:09,440
+we ask what fraction of these 204 have also a king in the second card.
+
+84
+00:05:09,440 --> 00:05:12,560
+So this case we type the following piece of code.
+
+85
+00:05:12,560 --> 00:05:17,570
+We add all the cases that have king in the first, king in the second,
+
+86
+00:05:17,570 --> 00:05:21,500
+and divide by the cases that have a king in the first.
+
+87
+00:05:21,500 --> 00:05:28,550
+And now we get the answer 0.058 dot dot dot, which is exactly 3 out of 51,
+
+88
+00:05:28,550 --> 00:05:30,560
+which we had already deduced.
+
+89
+00:05:30,560 --> 00:05:33,770
+Note that the code we just saw is equivalent to this piece of code
+
+90
+00:05:33,770 --> 00:05:37,010
+where we compute the proportions instead of the totals.
+
+91
+00:05:37,010 --> 00:05:39,430
+And this also gives us the answer that we want, 3 out
+
+92
+00:05:39,430 --> 00:05:44,540
+of 51. This is an R version of the multiplication rule, which tells us
+
+93
+00:05:44,540 --> 00:05:49,080
+the probability of B, given A, is equal to proportion of A and B,
+
+94
+00:05:49,080 --> 00:05:51,920
+or the probability of A and B, divided by the proportion of A
+
+95
+00:05:51,920 --> 00:05:54,260
+or the probability of A.
+
+96
+00:05:54,260 --> 00:05:58,250
+Now, what if the order does not matter?
+
+97
+00:05:58,250 --> 00:06:02,570
+For example, in blackjack, if you get an ace and a face card or a 10,
+
+98
+00:06:02,570 --> 00:06:06,487
+it&#39;s called a natural 21, and you win automatically.
+
+99
+00:06:06,487 --> 00:06:08,820
+If we want to compute the probability of this happening,
+
+100
+00:06:08,820 --> 00:06:12,060
+we want to enumerate the combinations, not permutations,
+
+101
+00:06:12,060 --> 00:06:13,410
+since the order doesn&#39;t matter.
+
+102
+00:06:13,410 --> 00:06:18,050
+So if we get an A and a king, king and an A, it&#39;s still a 21.
+
+103
+00:06:18,050 --> 00:06:20,300
+We don&#39;t want to count that twice.
+
+104
+00:06:20,300 --> 00:06:24,020
+So notice the difference between the permutations functions, which
+
+105
+00:06:24,020 --> 00:06:28,790
+lists all permutations, and the combination function,
+
+106
+00:06:28,790 --> 00:06:32,550
+where order does not matter.
+
+107
+00:06:32,550 --> 00:06:36,750
+This means that 2, 1 doesn&#39;t appear because 1, 2 already appeared.
+
+108
+00:06:36,750 --> 00:06:41,240
+Similarly, 3, 1 and 3, 2 don&#39;t appear.
+
+109
+00:06:41,240 --> 00:06:45,650
+So to compute the probability of a natural 21 in blackjack,
+
+110
+00:06:45,650 --> 00:06:47,120
+we can do this.
+
+111
+00:06:47,120 --> 00:06:51,680
+We can define a vector that includes all the aces, a vector that
+
+112
+00:06:51,680 --> 00:06:55,100
+includes all the face cards, then we generate
+
+113
+00:06:55,100 --> 00:07:01,550
+all the combinations of picking 2 cards out of 52, and then we simply count.
+
+114
+00:07:01,550 --> 00:07:04,730
+How often do we get aces and a face card?
+
+115
+00:07:04,730 --> 00:07:10,580
+And we get the answer 0.048 dot, dot, dot.
+
+116
+00:07:10,580 --> 00:07:14,390
+Now, notice that in the previous piece of code
+
+117
+00:07:14,390 --> 00:07:17,430
+we assumed that the aces come first.
+
+118
+00:07:17,430 --> 00:07:19,760
+This is only because we know the way that combination
+
+119
+00:07:19,760 --> 00:07:22,580
+generates and enumerates possibilities.
+
+120
+00:07:22,580 --> 00:07:25,100
+But if we want to be safe, we can instead
+
+121
+00:07:25,100 --> 00:07:29,030
+type this code, which considers both possibilities.
+
+122
+00:07:29,030 --> 00:07:30,920
+We get the same answer, and again, this is
+
+123
+00:07:30,920 --> 00:07:35,600
+because we know how combinations works and how it lists the possibilities.
+
+124
+00:07:35,600 --> 00:07:39,680
+Instead of using combinations to deduce the exact probability of a natural 21,
+
+125
+00:07:39,680 --> 00:07:43,220
+we can also use a Monte Carlo to estimate this probability.
+
+126
+00:07:43,220 --> 00:07:46,130
+In this case, we draw two cards over and over
+
+127
+00:07:46,130 --> 00:07:48,770
+and keep track of how many 21&#39;s we get.
+
+128
+00:07:48,770 --> 00:07:53,550
+We can use the function sample to draw a card without a replacement like this.
+
+129
+00:07:53,550 --> 00:07:55,340
+Here&#39;s 1 hand.
+
+130
+00:07:55,340 --> 00:07:57,030
+We didn&#39;t get a 21 there.
+
+131
+00:07:57,030 --> 00:08:01,040
+And then check if 1 card is an ace and the other is a face card or a 10.
+
+132
+00:08:01,040 --> 00:08:06,920
+Now we simply repeat this over and over and we get a very good approximation--
+
+133
+00:08:06,920 --> 00:08:09,472
+in this case, 0.0488.
+

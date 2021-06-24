@@ -1,0 +1,160 @@
+0
+00:00:05,820 --> 00:00:08,650
+RAFAEL IRIZARRY: Suppose you&#39;re in a classroom with 50 people.
+
+1
+00:00:08,650 --> 00:00:11,770
+If we assume this is a randomly selected group,
+
+2
+00:00:11,770 --> 00:00:16,030
+what is the chance that at least two people have the same birthday?
+
+3
+00:00:16,030 --> 00:00:19,380
+Although it is somewhat advanced, we can actually deduce this mathematically,
+
+4
+00:00:19,380 --> 00:00:24,940
+and we do this later, but now, we&#39;re going to use Monte Carlo simulations.
+
+5
+00:00:24,940 --> 00:00:28,450
+For simplicity, we assumed that nobody was born on February 29th.
+
+6
+00:00:28,450 --> 00:00:31,670
+This actually doesn&#39;t change the answer much.
+
+7
+00:00:31,670 --> 00:00:34,660
+All right, first, note that birthdays can be represented
+
+8
+00:00:34,660 --> 00:00:37,810
+as numbers between 1 and 365.
+
+9
+00:00:37,810 --> 00:00:42,070
+So a sample of 50 random birthdays can be obtained simply
+
+10
+00:00:42,070 --> 00:00:45,550
+using the sample function, like this.
+
+11
+00:00:45,550 --> 00:00:49,870
+To check if, in this particular set of 50 people we have at least two
+
+12
+00:00:49,870 --> 00:00:53,860
+with the same birthday, we can use the function duplicated,
+
+13
+00:00:53,860 --> 00:00:57,400
+which returns true whenever an element of a vector
+
+14
+00:00:57,400 --> 00:01:00,440
+has already appeared in that vector.
+
+15
+00:01:00,440 --> 00:01:01,430
+So here&#39;s an example.
+
+16
+00:01:01,430 --> 00:01:04,989
+If I type duplicated 1, 2, 3, 1, 4, 3, 5, ,
+
+17
+00:01:04,989 --> 00:01:11,330
+we get true&#39;s for the 1 and the 3 the second time they appear.
+
+18
+00:01:11,330 --> 00:01:14,350
+So to check if two birthdays were the same,
+
+19
+00:01:14,350 --> 00:01:18,970
+we simply use any and duplicated functions, like this.
+
+20
+00:01:18,970 --> 00:01:23,020
+And in the case that we just generated, we actually do have this happening.
+
+21
+00:01:23,020 --> 00:01:26,620
+We did have two people, at least two people, with the same birthday.
+
+22
+00:01:26,620 --> 00:01:28,510
+We get true.
+
+23
+00:01:28,510 --> 00:01:32,380
+Now, to estimate the probability, we&#39;re going to repeat this experiment.
+
+24
+00:01:32,380 --> 00:01:36,290
+We&#39;re going to run a Monte Carlo simulation over and over again.
+
+25
+00:01:36,290 --> 00:01:38,920
+So what we do is we do it 10,000 times.
+
+26
+00:01:38,920 --> 00:01:42,440
+We use the replicate function like this.
+
+27
+00:01:42,440 --> 00:01:44,800
+And when we&#39;re done, we get that the probability
+
+28
+00:01:44,800 --> 00:01:48,370
+of having two people, at least two people, with the same birthday
+
+29
+00:01:48,370 --> 00:01:52,820
+in a group of 50 people is about 98%.
+
+30
+00:01:52,820 --> 00:01:55,450
+Were you expecting this to be so high?
+
+31
+00:01:55,450 --> 00:01:57,922
+People tend to underestimate these probabilities,
+
+32
+00:01:57,922 --> 00:02:00,130
+so it might be an opportunity for you to bet and make
+
+33
+00:02:00,130 --> 00:02:01,450
+some money off of your friends.
+
+34
+00:02:01,450 --> 00:02:04,540
+To get an intuition as to why this is so high,
+
+35
+00:02:04,540 --> 00:02:07,780
+think of what happens as you get close to 365 people.
+
+36
+00:02:07,780 --> 00:02:12,250
+At this stage, we run out of days, and the probability is 1.
+
+37
+00:02:12,250 --> 00:02:14,530
+In the next video, we&#39;re going to actually compute
+
+38
+00:02:14,530 --> 00:02:16,930
+this probability for different group sizes
+
+39
+00:02:16,930 --> 00:02:20,910
+and see how fast it gets close to 1.
+

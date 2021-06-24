@@ -1,0 +1,372 @@
+0
+00:00:05,172 --> 00:00:07,380
+RAFAEL IRIZARRY: Say you want to use what you&#39;ve just
+
+1
+00:00:07,380 --> 00:00:09,600
+learned about the birthday problem to bet
+
+2
+00:00:09,600 --> 00:00:15,240
+with friends about two people having the same birthday in a group of people.
+
+3
+00:00:15,240 --> 00:00:18,090
+When are the chances larger than 50%?
+
+4
+00:00:18,090 --> 00:00:20,280
+Larger than 75%?
+
+5
+00:00:20,280 --> 00:00:22,980
+Let&#39;s create a lookup table.
+
+6
+00:00:22,980 --> 00:00:26,970
+We can quickly create a function to compute this for any group.
+
+7
+00:00:26,970 --> 00:00:29,040
+We write the function like this.
+
+8
+00:00:29,040 --> 00:00:32,430
+We&#39;ll call it compute prob, and we&#39;ll basically
+
+9
+00:00:32,430 --> 00:00:35,910
+make the calculations for the probability
+
+10
+00:00:35,910 --> 00:00:38,430
+of two people having the same birthday.
+
+11
+00:00:38,430 --> 00:00:41,940
+We will use a small Monte Carlo simulation to do it.
+
+12
+00:00:41,940 --> 00:00:44,940
+Now that we&#39;ve done this, we want to compute this function,
+
+13
+00:00:44,940 --> 00:00:48,900
+we want to apply this function to several values of n,
+
+14
+00:00:48,900 --> 00:00:50,910
+let&#39;s say from 1 to 60.
+
+15
+00:00:50,910 --> 00:00:55,920
+Let&#39;s define n as a sequence starting at 1 and ending at 60.
+
+16
+00:00:55,920 --> 00:01:01,500
+Now, we can use a for loop to apply this function to each value in n,
+
+17
+00:01:01,500 --> 00:01:05,760
+but it turns out that for loops are rarely the preferred approach in R.
+
+18
+00:01:05,760 --> 00:01:10,980
+In general, we try to perform operations on entire vectors.
+
+19
+00:01:10,980 --> 00:01:13,620
+Arithmetic operations, for example, operate
+
+20
+00:01:13,620 --> 00:01:16,050
+on vectors in an element wise fashion.
+
+21
+00:01:16,050 --> 00:01:21,150
+We saw this when we learned about R. So if we type x equals 1 through 10,
+
+22
+00:01:21,150 --> 00:01:23,950
+now X is the vector starting at 1 and ending at 10,
+
+23
+00:01:23,950 --> 00:01:25,950
+and we compute the square root of x, it actually
+
+24
+00:01:25,950 --> 00:01:28,860
+computes the square root for each element.
+
+25
+00:01:28,860 --> 00:01:33,120
+Equally, if we define y to be 1 through 10, and then multiply x by y,
+
+26
+00:01:33,120 --> 00:01:35,460
+it multiplies each element 1 by 1--
+
+27
+00:01:35,460 --> 00:01:38,820
+1 times 1, 2 times 2, et cetera.
+
+28
+00:01:38,820 --> 00:01:41,280
+So there&#39;s really no need for for loops.
+
+29
+00:01:41,280 --> 00:01:44,530
+But not all functions work this way.
+
+30
+00:01:44,530 --> 00:01:47,430
+You can&#39;t just send a vector to any function in R.
+
+31
+00:01:47,430 --> 00:01:51,630
+For example, the function we just wrote does not work element-wise
+
+32
+00:01:51,630 --> 00:01:55,650
+since it&#39;s expecting a scalar, it&#39;s expecting an n.
+
+33
+00:01:55,650 --> 00:01:58,620
+This piece of code does not do what we want.
+
+34
+00:01:58,620 --> 00:02:03,100
+If we type compute prob and send it the vector n, we will not get what we want.
+
+35
+00:02:03,100 --> 00:02:05,700
+We will get just one number.
+
+36
+00:02:05,700 --> 00:02:09,910
+What we can do instead is use the function sapply.
+
+37
+00:02:09,910 --> 00:02:13,410
+sapply permits us to perform element-wise operations
+
+38
+00:02:13,410 --> 00:02:14,920
+on any function.
+
+39
+00:02:14,920 --> 00:02:16,260
+Here&#39;s how it works.
+
+40
+00:02:16,260 --> 00:02:21,610
+We&#39;ll define a simple example for the vector 1 through 10.
+
+41
+00:02:21,610 --> 00:02:24,280
+If we want to apply the square roots of each element of x,
+
+42
+00:02:24,280 --> 00:02:28,020
+we can simply type sapply x comma square root,
+
+43
+00:02:28,020 --> 00:02:30,807
+and it&#39;ll apply square root to each element of x.
+
+44
+00:02:30,807 --> 00:02:33,890
+Of course, we don&#39;t need to do this because square root already does that,
+
+45
+00:02:33,890 --> 00:02:36,240
+but we are using it as a simple example.
+
+46
+00:02:38,760 --> 00:02:46,170
+So for our case, we can simply type prob equals sapply n-- n is our vector--
+
+47
+00:02:46,170 --> 00:02:49,260
+and then the function we define compute prob.
+
+48
+00:02:49,260 --> 00:02:52,770
+And this will assign to each element of prob
+
+49
+00:02:52,770 --> 00:02:56,700
+the probability of two people having the same birthday for that n.
+
+50
+00:02:56,700 --> 00:02:58,770
+And now we can very quickly make a plot.
+
+51
+00:02:58,770 --> 00:03:02,250
+We plot the probability of two people having the same birthday
+
+52
+00:03:02,250 --> 00:03:06,160
+against the size of the group.
+
+53
+00:03:06,160 --> 00:03:09,060
+Now, let&#39;s compute the exact probabilities
+
+54
+00:03:09,060 --> 00:03:11,070
+rather than use Monte Carlo simulations.
+
+55
+00:03:11,070 --> 00:03:14,640
+The function we just defined uses a Monte Carlo simulation,
+
+56
+00:03:14,640 --> 00:03:17,400
+but we can use what we&#39;ve learned about probability theory
+
+57
+00:03:17,400 --> 00:03:20,160
+to compute the exact value.
+
+58
+00:03:20,160 --> 00:03:23,190
+Not only do we get the exact answer using math,
+
+59
+00:03:23,190 --> 00:03:25,530
+but the computations are much faster since we
+
+60
+00:03:25,530 --> 00:03:27,690
+don&#39;t have to generate experiments.
+
+61
+00:03:27,690 --> 00:03:29,760
+We simply get a number.
+
+62
+00:03:29,760 --> 00:03:33,330
+To make the math simpler for this particular problem,
+
+63
+00:03:33,330 --> 00:03:35,950
+instead of computing the probability of it happening,
+
+64
+00:03:35,950 --> 00:03:38,430
+we&#39;ll compute the probability of it not happening,
+
+65
+00:03:38,430 --> 00:03:40,800
+and then we can use the multiplication rule.
+
+66
+00:03:40,800 --> 00:03:42,780
+Let&#39;s start with the first person.
+
+67
+00:03:42,780 --> 00:03:47,630
+The probability that person 1 has a unique birthday is 1, of course.
+
+68
+00:03:47,630 --> 00:03:48,130
+All right.
+
+69
+00:03:48,130 --> 00:03:49,630
+Now let&#39;s move on to the second one.
+
+70
+00:03:49,630 --> 00:03:51,960
+The probability that the second person has
+
+71
+00:03:51,960 --> 00:03:57,300
+a unique birthday given that person 1 already took one of the days
+
+72
+00:03:57,300 --> 00:04:01,405
+is 364 divided by 365.
+
+73
+00:04:01,405 --> 00:04:05,490
+Then for a person 3, given that the first two people already
+
+74
+00:04:05,490 --> 00:04:08,490
+have unique birthdays, that leaves 363.
+
+75
+00:04:08,490 --> 00:04:12,240
+So now that probability is 363 divided by 365.
+
+76
+00:04:12,240 --> 00:04:15,660
+If we continue this way and find the chances of all,
+
+77
+00:04:15,660 --> 00:04:21,045
+say, 50 people having unique birthdays, we would multiply 1 times 364 divided
+
+78
+00:04:21,045 --> 00:04:24,210
+by 365, times 363 divided by 365, dot dot
+
+79
+00:04:24,210 --> 00:04:28,330
+dot, all the way to the 50th element.
+
+80
+00:04:28,330 --> 00:04:30,300
+Here&#39;s the equation.
+
+81
+00:04:30,300 --> 00:04:33,360
+Now, we can easily write a function that does this.
+
+82
+00:04:33,360 --> 00:04:35,550
+This time we&#39;ll call it exact prob.
+
+83
+00:04:35,550 --> 00:04:39,540
+It takes n as a argument, and it computes
+
+84
+00:04:39,540 --> 00:04:42,990
+this probability using this simple code.
+
+85
+00:04:42,990 --> 00:04:49,400
+Now we can compute each probability for each n using sapply again, like this.
+
+86
+00:04:49,400 --> 00:04:52,230
+And if we plot it, we can see that the Monte Carlo
+
+87
+00:04:52,230 --> 00:04:55,200
+simulations were almost exactly right.
+
+88
+00:04:55,200 --> 00:04:59,950
+They were almost exact approximations of the actual value.
+
+89
+00:04:59,950 --> 00:05:02,580
+Now, notice had it not been possible to compute
+
+90
+00:05:02,580 --> 00:05:05,720
+the exact probabilities, something that sometimes happens,
+
+91
+00:05:05,720 --> 00:05:08,690
+we would have still been able to accurately estimate
+
+92
+00:05:08,690 --> 00:05:12,250
+the probabilities using Monte Carlo.
+
