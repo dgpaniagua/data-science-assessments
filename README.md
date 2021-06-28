@@ -1,2 +1,2 @@
 # hardvardx-data-science
-HardvardX Data Science Program
+HardvardX Data Science Professional Certificate Assessments
