@@ -45,9 +45,17 @@ titanic %>% filter(Fare!=0) %>% ggplot(aes(Survived, Fare)) +
   scale_y_continuous(trans = "log2") +
   geom_jitter(width = 0.1, alpha = 0.2)
 
+####### Q7 #######
 
+titanic %>% ggplot(aes(Pclass, fill=Survived)) + geom_bar()
+titanic %>% ggplot(aes(Pclass, fill=Survived)) + geom_bar(position = position_fill())
+titanic %>% ggplot(aes(Survived, fill=Pclass)) + geom_bar(position = position_fill())
 
+####### Q8 #######
 
+titanic %>% ggplot(aes(Age, fill=Survived, y = ..count..)) + 
+  geom_density(alpha=0.2) +
+  facet_grid(Sex ~ Pclass)
 
 
 
