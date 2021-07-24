@@ -53,15 +53,15 @@ plot(p, 1 - pnorm(35, E, SE))
 
 ########## Q3 ##########
 p_win <- 5/38
-p_lose <- 1 - p_win
+p_loss <- 1 - p_win
 win <- 6
-lose <- -1
+loss <- -1
 
 ## Q3a
-mu <- p_win*win + p_lose*lose
+mu <- p_win*win + p_loss*loss
 
 ## Q3b
-sigma <- abs(lose - win) * sqrt(p_win*p_lose)
+sigma <- abs(loss - win) * sqrt(p_win*p_loss)
 
 ## Q3c
 mu
